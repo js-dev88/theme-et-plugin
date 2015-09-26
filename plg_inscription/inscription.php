@@ -59,7 +59,7 @@ public function inscription_form(){
    <!-- onSubmit="return verif()"-->
    <div id="inscriptionform">
    
-    <form id="formlightbox" method="post"  action= "<?php echo esc_url($_SERVER['REQUEST_URI']); ?>"  onSubmit="return verif()" >
+    <form  method="post"  action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>"  onSubmit="return verif()" >
      
             
 
