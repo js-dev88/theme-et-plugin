@@ -1,7 +1,7 @@
 /* Theme Name: Thème Comité Jumelage de Meythet
  Description: created by Clément WOJDASZKA
  Version: 0.1
-Author: Clément WOJDASZKA   
+Author: Clément WOJDASZKA
  */
 
 /* Menu parallax incoming v2 */
@@ -16,9 +16,9 @@ Author: Clément WOJDASZKA
 	margin-top:-10vh;
 	position:float;
 	width:100vw;
-	
+
 	}
-/* Utile ou pas 
+/* Utile ou pas
 #siteweb_band.fixed {
 	position:fixed;
 	width:100%;
@@ -29,7 +29,7 @@ Author: Clément WOJDASZKA
 
 fin */
 
-#menu 
+#menu
 {
     position: relative;     height: 1vh;
 	padding-top:1vh;
@@ -59,9 +59,9 @@ fin */
 #menu a
 {
 	line-height: 31px;
-    display: block;     
+    display: block;
 	padding: 0 10px;
-    text-decoration: none; 
+    text-decoration: none;
 	color: #eee;
     background: #2B6582;
 	-webkit-border-radius: 5px;
@@ -75,7 +75,7 @@ fin */
     padding: 0 1vh 0 0;
 
     text-align: right;
-	
+
 
 }
 /*
@@ -108,14 +108,14 @@ body
 	/**/
 
     padding-top: 0vh;
-	
+
     text-align: left;
 
     color: black;
     background-image: url(image/bg-2.jpg);
     background-repeat: repeat;
     background-attachment: fixed;
-    background-size: 100vw; 
+    background-size: 100vw;
 }
 
 /* enlève le soulignement des href */
@@ -152,7 +152,7 @@ head
 #header
 {
     font-family: Trebuchet MS, Lucida Grande, Arial, Helvetica, Georgia, Sans-serif;
-	
+
     position: fixed;
     top: 0;
 
@@ -176,7 +176,7 @@ head
     width: 60vw;
     margin-bottom: 1vh;
 }
-/* Sidebar useless 
+/* Sidebar useless
 .sidebar
 {
     float: right;
@@ -266,7 +266,7 @@ head
     /*margin-top:3%;
 	margin-left:80%;
 	width : 	20%;*/
-	
+
 }
 
 /*Lightbox*/
@@ -343,7 +343,7 @@ head
 /* Barre recherche */
 .searchpositionning
 {
-    text-align: left; 
+    text-align: left;
 }
 
 #search
@@ -378,7 +378,7 @@ head
 .button-success
 {
     cursor: pointer;
-    
+
 
     border: 1px solid;
     /*outline: 1px solid;
@@ -417,8 +417,10 @@ head
 
     /*-webkit-box-shadow: rgba(0,0,0,.2) 0 1px 0 0;
             box-shadow: rgba(0,0,0,.2) 0 1px 0 0;*/
-   
+
 }
+
+
 
 /* Fin bouton de connexion et d'inscription */
 
@@ -481,4 +483,45 @@ head
     background-image: url(image/logocapaci.png);
     background-repeat: no-repeat;
     background-position: top left;
+}
+
+/*Style du formulaire de connexion*/
+.connexionform
+{
+	position: absolute;
+	width: 15vw;
+	height: 30vh;
+	z-index: 1002;
+	padding: 10px;
+	/*display: none;*/
+	/*overflow: auto;*/
+
+	color: black;
+	border-radius: 10px;
+	background-color: #0CC9BD;
+	box-shadow: inset 0 0 4px 4px #2B6582;
+
+}
+/*bouton de deconnexion*/
+input[name="pgl_deconnexion"]
+{
+	margin-top: 4vh;
+
+
+}
+.login-username {
+	margin-bottom: 1.5vw;
+
+}
+.login-password {
+	margin-bottom: 1.5vw;
+
+}
+label[for="user"] {
+	margin-right: 1vw;
+
+}
+label[for="pass"] {
+	margin-right: 1vw;
+
 }

@@ -7,7 +7,7 @@
     <?php wp_head(); ?>
 </head>
 <body>
-    <div class="global"><!-- a fermer dans le footer-->   
+    <div class="global"><!-- a fermer dans le footer-->
 
 		<header class="bird-box"><!-- Images pour le parallax -->
 			<div class="logo"></div>
@@ -22,24 +22,34 @@
 			<div id="page">
 				<div id="header"></div>
 				<div id="menu"  role="navigation">
+
 					<?php //nav_menu=> affiche menu
 					wp_nav_menu(array('theme_location' => 'header'));
 					?>
 					<!-- Boutons Contact s'inscrire et se connecter -->
+          <!-- Liste ul pour intégrer le connexionform -->
+          <ul>
 					<noscript><a href="index.php/contact"></noscript>
 					<input class="lightbox button-success florian-button"   id="lbx-contact" type="button" value="Contact" name="contact" />
-					<noscript> </a> </noscript>	
-
+					<noscript> </a> </noscript>
+          <li>
 					<noscript><a href="index.php/connexion"></noscript>
-					<input class="button-success florian-button"   type="button" value="Se connecter" name="connexion" />
-					<noscript> </a> </noscript>	
-
+					<input class="button-success florian-button"   type="button" value="Se connecter" name="connexion" id="connexion_button"/>
+          <noscript> </a> </noscript>
+          <ul>
+            <li>
+              <?php echo do_shortcode('[cjm_connexion_form]'); ?>
+            </li>
+          </ul>
+          </li>
 					<noscript><a href="index.php/inscription"></noscript>
 					<input class="lightbox button-success florian-button"  id="lbx-inscription" type="button" value="S'inscrire" name="inscription" />
-					<noscript> </a> </noscript>	
-				</div>
+					<noscript> </a> </noscript>
+          </ul>
+        </div>
 			</div>
-			<div class="backdrop"></div>	
+
+			<div class="backdrop"></div>
 			<div class="box">
 			<div class="close">x</div>
 				<div id="inscriptionform">
@@ -48,10 +58,8 @@
 		    	<div id="contactform">
 				 <?php echo do_shortcode('[cjm_contact_form]'); ?>
 		    	</div>
-		    </div>
+
+						    </div>
 
 		</header>
 	</div>
-
-
-
