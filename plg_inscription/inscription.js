@@ -29,7 +29,7 @@ function verif(){
 		document.getElementById("champObl").style.color ="black";
 		if(document.getElementById("validMAil").style.display=="block"){
 			return false;
-	    }else if(document.getElementById("invConfMail").style.display=="block"){
+	    }else if(document.getElementById("formInvPassword").style.display=="block"){
 			return false;
 		}else if(document.getElementById("validName").style.display=="block"){
 			return false;

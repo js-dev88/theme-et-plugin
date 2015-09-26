@@ -29,9 +29,30 @@ function __construct(){
     add_shortcode('cjm_inscription_form', array($this, 'shortcode'));
     add_action('wp_enqueue_scripts', array($this, 'enqueuestyle'));
     add_action('wp_enqueue_scripts', array($this, 'enqueuescript'));
-
+    add_filter('manage_users_columns',array($this,'theme_add_user_info_column'));
+    add_action('manage_users_custom_column',array($this,'theme_show_user_tel_data'),10,3);
 
 }
+function enqueuestyle(){
+        wp_enqueue_style('instyle', plugins_url('plg_inscription/instyle.css'));
+
+}
+
+function enqueuescript(){
+        wp_enqueue_script( 'plg-inscription',plugins_url('plg_inscription/inscription.js'),'1.0');
+}
+
+function theme_add_user_info_column( $columns ) {
+        $columns['tel'] = __( 'Téléphone');
+        $columns['adresse'] = __( 'Adresse');   
+        $columns['ville'] = __( 'Ville');   
+        $columns['cp'] = __( 'Code postal');       
+        return $columns;
+} 
+function theme_show_user_tel_data( $value, $column_name, $user_id ) {
+     return esc_attr__(get_user_meta( $user_id, $column_name, true ));   
+}
+
 //form
 public function inscription_form(){
     ?>
@@ -118,7 +139,7 @@ public function inscription_form(){
             <div class = formgroup>
                 <label for="_inspassword">Mot de passe</label>
                 <div id="validPassword" class="inv">Format Mot de passe Invalide</div>
-                <input name ="_inspassword" id="_inspassword" type="password" class="inputForm"
+                <input name ="_inspassword" id="_inspassword" type="text" class="inputForm"
                 value="<?php echo(isset($_POST['_inspassword']) ? $_POST['_inspassword'] : null);?>"
                 placeholder="Mot de passe" 
                 onBlur="notEmpty(this)" onFocus="init(this)" required/>
@@ -144,6 +165,7 @@ function validation()
     {
         $s="testmsgerror";
  //verifications php       
+        
 
         if (empty($this->firstname) || empty($this->lastname) || empty($this->email) ||
             empty($this->confemail) || empty($this->tel) || empty($this->adress) ||
@@ -223,19 +245,6 @@ function validation()
         }
 
 
-       $details = array(
-            'adress' => $this->adress,
-            'ville' => $this->ville,
-            'password' => $this->password,
-            'confpassword' => $this->confpassword,
-        );
-
-        foreach ($details as $field => $detail) {
-            if (!validate_username($detail)) {
-                return new WP_Error('name_invalid', 'Désolé,  "' . $field . '" n\'est pas valide');
-            }
-        }
-
     }
 
 function inscription()
@@ -245,9 +254,9 @@ function inscription()
     $userdata = array(
         'user_login' => esc_attr($this->email),
         'user_email' => esc_attr($this->email),
-        'user_pass' => esc_attr($this->password),
-        'first_name' => $this->firstname,
-        'last_name' => $this->lastname
+        'user_pass' => $this->password,
+        'first_name' => esc_attr($this->firstname),
+        'last_name' => esc_attr($this->lastname)
     );
 
     if (is_wp_error($this->validation())) {
@@ -258,14 +267,28 @@ function inscription()
         $register_user = wp_insert_user($userdata); // renvoie l'id
         if (!is_wp_error($register_user)) {
 
-            //TODO sécuriser
-			$updata_usertel=update_user_meta( $register_user, 'tel', esc_attr($this->tel));
-			$updata_useradresse=update_user_meta( $register_user, 'adresse', esc_attr($this->adress));
-			$updata_usercp=update_user_meta( $register_user, 'cp', esc_attr($this->cp));
-			$updata_userville=update_user_meta( $register_user, 'ville', esc_attr($this->ville));
+            $userMetaUpdate = array(
+                'tel' => esc_attr($this->tel),
+                'adresse' => esc_attr($this->adress),
+                'cp' => esc_attr($this->cp),
+                'ville' => esc_attr($this->ville)
+            );
+
+            foreach($userMetaUpdate as $k => $v)
+            {
+               $update_user =  update_user_meta($register_user,$k,$v);
+
+               if ($update_user==false)
+               {
+                    echo '<div style="margin-bottom: 6px" class="btn btn-block btn-lg btn-danger">';
+                    echo '<strong>Erreur d\'insertion base de données('.$k.')</strong>';
+                    echo '</div>';
+               }
+               
+
+            }
 			
             echo '<div style="margin-bottom: 6px" class="btn btn-block btn-lg btn-danger">';
-			echo $this->nom;
             echo '<strong>Registration complete. Goto <a href="' . wp_login_url() . '">login page</a></strong>';
             echo '</div>';
         } else {
@@ -281,10 +304,11 @@ function shortcode(){
 
         ob_start();
 
+        if($_POST['submitInscription']) {
+            
+             $_POST['_inspassword']=  esc_attr($_POST['_inspassword']);
+             $_POST['_insconfpassword'] = esc_attr($_POST['_insconfpassword']);
 
-
-       if ($_POST['submitInscription']) {
-           
             $this->firstname = $_POST['_insfirstname'];
             $this->lastname = $_POST['_insname'];
             $this->email = $_POST['_insemail'];
@@ -293,38 +317,20 @@ function shortcode(){
             $this->adress = $_POST['_insadress'];
             $this->cp = $_POST['_inscp'];
             $this->ville = $_POST['_insville'];
-            $this->password =  sanitize_text_field($_POST['_inspassword']);
-            $this->confpassword = sanitize_text_field($_POST['_insconfpassword']);
-
+            $this->password =  $_POST['_inspassword'];
+            $this->confpassword = $_POST['_insconfpassword'];
             
-
-
-
-
-            print_r($_POST);
-
             $this->validation();
             $this->inscription();
 
-           }
-
+        }
 
         $this->inscription_form();
-
-
         return ob_get_clean();
-
-    }
-
-    function enqueuestyle(){
-        wp_enqueue_style('instyle', plugins_url('plg_inscription/instyle.css'));
-
-    }
-
-    function enqueuescript(){
-         wp_enqueue_script( 'plg-inscription',plugins_url('plg_inscription/inscription.js'),'1.0');
     }
 }
 
 
 new Cjm_inscription_form;
+
+
