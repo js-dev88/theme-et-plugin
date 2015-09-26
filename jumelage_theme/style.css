@@ -272,7 +272,7 @@ head
 /*Lightbox*/
 .backdrop
 {
-    position: absolute;
+    position: fixed;
     z-index: 50;
     top: 0;
     left: 0;
@@ -280,7 +280,7 @@ head
     display: none;
 
     width: 100%;
-    height: 230%;
+    height: 100%;
 
     opacity: .0;
     background: #000;
@@ -291,7 +291,7 @@ head
 
 .box
 {
-    position: absolute;
+    position: fixed;
     z-index: 1002;
     top: 5%;
     left: 25%;

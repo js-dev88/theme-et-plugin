@@ -148,6 +148,3 @@ function verifField(chaine,phrase,regex){
 }
 
 
-
-
-

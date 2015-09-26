@@ -57,9 +57,10 @@ function theme_show_user_tel_data( $value, $column_name, $user_id ) {
 public function inscription_form(){
     ?>
    <!-- onSubmit="return verif()"-->
-
-    <form method="post" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" onSubmit="return verif()" >
-     <div id="inscriptionform">
+   <div id="inscriptionform">
+   
+    <form id="formlightbox" method="post"  action= "<?php echo esc_url($_SERVER['REQUEST_URI']); ?>"  onSubmit="return verif()" >
+     
             
 
 
@@ -71,7 +72,7 @@ public function inscription_form(){
                 <input name ="_insfirstname"  id="_insfirstname" type="text" class="inputForm"
                 value="<?php echo(isset($_POST['_insfirstname']) ? $_POST['_insfirstname'] : null);?>"
                 placeholder="Prénom" 
-                onBlur="notEmpty(this);verifName(this);" onFocus="init(this)" required/>
+                onBlur="notEmpty(this);verifFirstname(this);" onFocus="init(this)" required/>
             </div>
 
             <div class = formgroup>
@@ -80,7 +81,7 @@ public function inscription_form(){
                 <input name ="_insname"  id="_insname" type="text" 
                 value="<?php echo(isset($_POST['_insname']) ? $_POST['_insname'] : null);?>"
                 placeholder="Nom" 
-                onBlur="notEmpty(this);verifFirstname(this);" onFocus="init(this)" required/>
+                onBlur="notEmpty(this);verifName(this);" onFocus="init(this)" required/>
             </div>
 
             <div class = formgroup>
@@ -98,7 +99,7 @@ public function inscription_form(){
                 <input name ="_insconfemail" id="_insconfemail" type="email" class="inputForm"
                 value="<?php echo(isset($_POST['_insconfemail']) ? $_POST['_insconfemail'] : null);?>"
                 placeholder="Confirmation E-mail" 
-                onBlur="notEmpty(this);verifConfMail(this)" onFocus="init(this)" required/>
+                onBlur="notEmpty(this);verifConfMail(this);" onFocus="init(this)" required/>
             </div>
 
             <div class = formgroup>
@@ -107,7 +108,7 @@ public function inscription_form(){
                 <input name ="_instel" id="_instel" type="text" class="inputForm"
                 value="<?php echo(isset($_POST['_instel']) ? $_POST['_instel'] : null);?>"
                 placeholder="Téléphone" 
-                onBlur="notEmpty(this)" onFocus="init(this)" required/>
+                onBlur="notEmpty(this);verifTel(this);" onFocus="init(this)" required/>
             </div>
 
             <div class = formgroup>
@@ -116,7 +117,7 @@ public function inscription_form(){
                 <input name ="_insadress" id="_insadress" type="text" class="inputForm"
                 value="<?php echo(isset($_POST['_insadress']) ? $_POST['_insadress'] : null);?>"
                 placeholder="Adresse"
-                onBlur="notEmpty(this)" onFocus="init(this)" required/>
+                onBlur="notEmpty(this);verifAdress(this);" onFocus="init(this)" required/>
             </div>
 
             <div class = formgroup>
@@ -125,7 +126,7 @@ public function inscription_form(){
                 <input name ="_inscp" id="_inscp" type="text" class="inputForm"
                 value="<?php echo(isset($_POST['_inscp']) ? $_POST['_inscp'] : null);?>"
                 placeholder="Code Postal" 
-                onBlur="notEmpty(this)" onFocus="init(this)" required/>
+                onBlur="notEmpty(this); verifCp(this);" onFocus="init(this)" required/>
             </div>
 
             <div class = formgroup>
@@ -134,7 +135,7 @@ public function inscription_form(){
                 <input name ="_insville" id="_insville" type="text" class="inputForm"
                 value="<?php echo(isset($_POST['_insville']) ? $_POST['_insville'] : null);?>"
                 placeholder="Ville" 
-                nBlur="notEmpty(this)" onFocus="init(this)" required/>
+                onBlur="notEmpty(this);verifVille(this);" onFocus="init(this)" required/>
             </div>
             <div class = formgroup>
                 <label for="_inspassword">Mot de passe</label>
