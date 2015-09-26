@@ -1,0 +1,24 @@
+#champObl {
+	color : red;
+}
+.testmsgerror{
+	color : green;
+}
+
+#inscriptionform label{
+    display: block;
+    width: 400px;
+}
+#inscriptionform input{
+    display: block;
+    width: 180px;
+}
+#inscriptionform submit{
+	display : block;
+}
+
+#inscriptionform .inv{
+	float : right;
+	display : none;
+	color : red;
+}

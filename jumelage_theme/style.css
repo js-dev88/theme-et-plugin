@@ -1,0 +1,484 @@
+/* Theme Name: Thème Comité Jumelage de Meythet
+ Description: created by Clément WOJDASZKA
+ Version: 0.1
+Author: Clément WOJDASZKA   
+ */
+
+/* Menu parallax incoming v2 */
+#menupara {
+	height:13vh;
+	background-color:#2B6582;
+	width:100vw;
+	}
+
+
+#siteweb_band {
+	margin-top:-10vh;
+	position:float;
+	width:100vw;
+	
+	}
+/* Utile ou pas 
+#siteweb_band.fixed {
+	position:fixed;
+	width:100%;
+	top:0;
+	left:0;
+	}
+
+
+fin */
+
+#menu 
+{
+    position: relative;     height: 1vh;
+	padding-top:1vh;
+	padding-bottom: 5vh;
+	width: 100vw;
+    background-color: #2B6582; /* parce que je suis pas raciste */ /* ou pas... */ /* humpa lumpa #charlylachocolaterie*/ /* "Les filles et le rhum !" Jack Sparrow 2010*/ /* stfu */
+}
+
+
+#menu ul
+{
+    font: bold 12pt Arial, Helvetica, sans-serif;
+
+    margin: 0; padding: 0;
+
+    list-style: none;
+}
+#menu li
+{
+    position: relative;
+
+    display: block;
+    float: left;
+
+    margin-right: 1px;
+}
+#menu a
+{
+	line-height: 31px;
+    display: block;     
+	padding: 0 10px;
+    text-decoration: none; 
+	color: #eee;
+    background: #2B6582;
+	-webkit-border-radius: 5px;
+            border-radius: 5px;
+}
+
+#header h1
+{
+    font-size: 2vh;
+
+    padding: 0 1vh 0 0;
+
+    text-align: right;
+	
+
+}
+/*
+#header p
+{
+    font-size: 1em;
+
+    padding: 0 20px 0 0;
+
+    text-align: right;
+}
+*/
+
+html,
+body
+{
+	height:65%;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+body
+{
+    font-family: Lucida Grande, Comic Sans MS, Helvetica, Sans-serif;
+    font-size: .8em;
+	/* Solution de secours pour présentation */
+	overflow-x: hidden;
+	/**/
+
+    padding-top: 0vh;
+	
+    text-align: left;
+
+    color: black;
+    background-image: url(image/bg-2.jpg);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: 100vw; 
+}
+
+/* enlève le soulignement des href */
+a:link
+{
+    text-decoration: none;
+
+    color: none;
+}
+/* enlève le soulignement des href */
+/* enlève couleur violette des href */
+a
+{
+    color: #046380;
+
+}
+
+
+
+/* enlève couleur violette des href */
+#page
+{
+    width: 100vw;
+
+    margin: 0 auto 0 auto;
+}
+
+head
+{
+    margin: 0;
+
+    padding: 0;
+}
+#header
+{
+    font-family: Trebuchet MS, Lucida Grande, Arial, Helvetica, Georgia, Sans-serif;
+	
+    position: fixed;
+    top: 0;
+
+    float: left;
+
+    width: 100vh;
+    margin-top: 0;
+    padding: 0;
+
+    background-color: #2B6582;
+}
+
+
+#content
+{
+	font-family: Comic Sans MS, Arial;
+    float: left;
+	text-align:justify;
+	margin-left:20vw;
+	padding:2%;
+    width: 60vw;
+    margin-bottom: 1vh;
+}
+/* Sidebar useless 
+.sidebar
+{
+    float: right;
+
+    margin-right: 10px;
+    padding: 0;
+}
+*/
+
+#footer
+{
+    position: relative;
+    bottom: 0;
+    left: 0;
+
+    clear: both;
+
+    width: 100vw;
+    margin-top: 55%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    text-align: center;
+
+    color: white;
+
+    background: #2B6582;
+}
+
+#pied{
+	color: white;
+}
+
+
+
+/* Sous-menu 1 */
+#menu ul ul
+{
+    font: lighter 10pt Arial, Helvetica, sans-serif;
+
+    position: absolute; z-index: 99999;     top: 31px; left: 0;
+
+    display: none; float: left;     width: 180px;
+
+    box-shadow: 0 3px 3px rgba(0,0,0,.2);
+}
+#menu ul ul li
+{
+    min-width: 2vw;
+}
+/* Sous-menu 2 */
+#menu ul ul ul
+{
+    top: 0;left: 100%;
+}
+#menu ul ul a
+{line-height: 1em;
+
+    width: 160px; height: auto;     padding: 10px;
+
+    background: #777;
+}
+#menu li:hover > a,
+#menu ul ul :hover > a
+{
+    color: #fff;
+
+    background: #777;
+}
+#menu ul li:hover > ul
+{
+    display: block;
+}
+#menu ul li.current_page_item > a,
+#menu ul li.current-menu-ancestor > a,
+#menu ul li.current-menu-item > a,
+#menu ul li.current-menu-parent > a
+{
+    background-color: #555;
+}
+
+/*CSS bouton menu principal*/
+
+
+.menuButton
+{
+    /*margin-top:3%;
+	margin-left:80%;
+	width : 	20%;*/
+	
+}
+
+/*Lightbox*/
+.backdrop
+{
+    position: absolute;
+    z-index: 50;
+    top: 0;
+    left: 0;
+
+    display: none;
+
+    width: 100%;
+    height: 230%;
+
+    opacity: .0;
+    background: #000;
+
+    filter: alpha(opacity=0);
+}
+
+
+.box
+{
+    position: absolute;
+    z-index: 1002;
+    top: 5%;
+    left: 25%;
+
+    display: none;
+    overflow: auto;
+
+    width: 30%;
+    height: 20%;
+    margin-left: 8%;
+    padding: 16px;
+
+    color: black;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: inset 0 0 4px 4px #999;
+}
+
+.close
+{
+    float: right;
+
+    margin-right: 6px;
+
+    cursor: pointer;
+}
+
+/*connexion formulaire*/
+
+#connexionform label
+{
+    display: block;
+
+    width: 150px;
+}
+#connexionform  checkbox
+{
+    display: inline;
+}
+
+#connexionform submit
+{
+    /*float: block;*/
+}
+
+/*inscription formulaire*/
+
+
+/* Barre recherche */
+.searchpositionning
+{
+    text-align: left; 
+}
+
+#search
+{
+    list-style-type: none;
+}
+
+#recherche
+{
+    border-radius: 15px;
+
+    background-color: white;
+}
+
+#searchsubmit
+{
+    width: 18px; /* largeur à spécifier */
+    height: 19px; /* longueur à spécifier */
+
+    cursor: pointer;
+
+    border: none;
+
+    background: url(image/search_icon.png) no-repeat center left;
+}
+
+#searchform
+{
+    background-color: transparent;
+}
+/* Bouton de connexion et d'inscription */
+.button-success
+{
+    cursor: pointer;
+    
+
+    border: 1px solid;
+    /*outline: 1px solid;
+    outline-color: rgba(255, 255, 255, .5);
+    outline-offset: 0;*/
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    text-shadow: none;
+}
+
+.button-success:hover
+{
+    /*border: 1px solid;*/
+	outline-color: rgba(255, 255, 255, 0);
+    /*outline-offset: 15px;*/
+    /*box-shadow: inset 0 0 20px rgba(0, 20, 0, .5), 0 0 20px rgba(0, 20, 0, .2);*/
+    /*text-shadow: 1px 1px 2px #427388;*/
+	background-color: gray;
+
+}
+
+
+
+.florian-button
+{
+    font-size: 16px;
+    font-weight: 700;
+
+    height: 32px;
+    padding: 4px 16px;
+
+    color: white;
+    border: none;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    background-color: #2B6582;
+
+    /*-webkit-box-shadow: rgba(0,0,0,.2) 0 1px 0 0;
+            box-shadow: rgba(0,0,0,.2) 0 1px 0 0;*/
+   
+}
+
+/* Fin bouton de connexion et d'inscription */
+
+/* Parallax */
+
+.bird-box
+{
+    position: relative;
+    overflow: hidden;
+    height: 90vh;
+	padding-top:0;
+	width: 100vw;
+    background-image: url(image/bird-bg.jpg);
+    background-attachment: fixed;
+    background-position: top center;
+    background-size:100vw;
+}
+
+
+
+.logo
+{
+    position: absolute;
+    top: 50%;
+
+    width: 100vw;
+
+    height: 7vh;
+    margin-top: -5vh;
+
+    background-image: url(image/back-bird-logo.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.fore-bird
+{
+    position: absolute;
+    top: 20vh;
+    left: 20%;
+
+    width: 100vw;
+    height: 70vh;
+    margin-left: -80vw;
+
+    background-image: url(image/meythet.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+
+.back-bird
+{
+    position: absolute;
+    left: 75%;
+
+    width: 70vw;
+    height: 50vh;
+    margin-right: -70vw;
+
+    background-image: url(image/logocapaci.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+}
